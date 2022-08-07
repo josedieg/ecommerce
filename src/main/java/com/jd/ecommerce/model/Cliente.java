@@ -1,5 +1,6 @@
 package com.jd.ecommerce.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -24,6 +25,7 @@ public class Cliente {
     @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cliente_id")
     private Integer id;
 
     private String nome;
