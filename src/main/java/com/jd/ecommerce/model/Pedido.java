@@ -2,6 +2,7 @@ package com.jd.ecommerce.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -11,7 +12,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.jd.ecommerce.enuns.StatusPedido;
@@ -32,7 +35,8 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
  
-    @ManyToOne
+    @ManyToOne()
+    @JoinColumn(name = "cliente_pedido_id")
     private Cliente clientePedido;
     
     @Column(name = "data_pedido")
@@ -48,6 +52,9 @@ public class Pedido {
 
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
+    
+    @OneToMany(mappedBy = "pedido")
+    private List<ItemPedido> itens;
 
     @Embedded
     private Endereco enderecoEntrega;
