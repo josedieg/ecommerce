@@ -35,31 +35,31 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
- 
+
     @ManyToOne()
     @JoinColumn(name = "cliente_pedido_id")
     private Cliente clientePedido;
-    
+
     @Column(name = "data_pedido")
     private LocalDateTime dataPedido;
 
     @Column(name = "data_conclusao")
     private LocalDateTime dataConclusao;
 
-    @Column(name = "nota_fiscal_id")
-    private Integer notaFiscalId;
+    @OneToOne(mappedBy = "pedido")
+    private NotaFiscal notaFiscal;
 
     private BigDecimal total;
 
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
-    
+
     @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itens;
 
     @Embedded
     private Endereco enderecoEntrega;
-    
+
     @OneToOne(mappedBy = "pedido")
     private PagamentoCartao pagamento;
 }
