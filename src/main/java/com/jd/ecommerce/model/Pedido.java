@@ -61,5 +61,5 @@ public class Pedido {
     private Endereco enderecoEntrega;
     
     @OneToOne(mappedBy = "pedido")
-    private PagamentoCartao pagamentoCartao;
+    private PagamentoCartao pagamento;
 }

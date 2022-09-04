@@ -33,6 +33,6 @@ public class PagamentoCartao {
     
     private StatusPagamento status;
     
-    @Column(name = "codigo_barras")
-    private String codigoBarras;
+    @Column(name = "numero")
+    private String numero;
 }
