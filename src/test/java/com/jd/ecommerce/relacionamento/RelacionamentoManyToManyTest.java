@@ -9,7 +9,7 @@ import com.jd.ecommerce.EntityManagerTest;
 import com.jd.ecommerce.model.Categoria;
 import com.jd.ecommerce.model.Produto;
 
-public class RelacionamentoManyToMany extends EntityManagerTest {
+public class RelacionamentoManyToManyTest extends EntityManagerTest {
 
     @Test
     public void verificarRelacionamento() {
