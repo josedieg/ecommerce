@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.jd.ecommerce.enuns.StatusPagamento;
@@ -25,11 +27,12 @@ public class PagamentoCartao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "pedido_id")
-    private Integer pedidoId;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "pedido_id")
+    private Pedido pedido;
     
     private StatusPagamento status;
     
-    @Column(name = "codigo_barras")
-    private String codigoBarras;
+    @Column(name = "numero")
+    private String numero;
 }

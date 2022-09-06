@@ -1,16 +1,15 @@
 package com.jd.ecommerce.model;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
-import javax.persistence.Column;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.jd.ecommerce.enuns.StatusPedido;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -28,17 +27,12 @@ public class NotaFiscal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "data_pedido")
-    private LocalDateTime dataPedido;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "pedido_id")
+    private Pedido pedido;
 
-    @Column(name = "data_conclusao")
-    private LocalDateTime dataConclusao;
-
-    private BigDecimal total;
-
-    @Column(name = "nota_fiscal_id")
-    private Integer notaFiscalId;
-
-    private StatusPedido status;
+    private Date dataEmissao;
+    
+    private String xml;
 
 }
