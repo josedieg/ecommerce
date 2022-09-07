@@ -14,3 +14,4 @@ insert into item_pedido (id, pedido_id, produto_id, preco_produto, quantidade) v
 
 -- categoria
 insert into categoria (id, nome) values (1, 'Eletronicos');
+insert into categoria (id, nome) values (2, 'Moveis');
