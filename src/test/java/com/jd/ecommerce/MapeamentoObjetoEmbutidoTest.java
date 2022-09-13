@@ -7,11 +7,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.jd.ecommerce.enuns.StatusPedido;
-import com.jd.ecommerce.model.Cliente;
 import com.jd.ecommerce.model.Endereco;
-import com.jd.ecommerce.model.ItemPedido;
 import com.jd.ecommerce.model.Pedido;
-import com.jd.ecommerce.model.Produto;
 
 public class MapeamentoObjetoEmbutidoTest extends EntityManagerTest {
 
@@ -25,7 +22,7 @@ public class MapeamentoObjetoEmbutidoTest extends EntityManagerTest {
 	endereco.setEstado("Giran");
 	
 	Pedido pedido = new Pedido();
-	pedido.setDataPedido(LocalDateTime.now());
+	pedido.setDataCriacao(LocalDateTime.now());
 	pedido.setStatus(StatusPedido.AGUARDANDO);
 	pedido.setTotal(new BigDecimal(1000));
 	pedido.setEnderecoEntrega(endereco);
