@@ -1,6 +1,6 @@
 -- produto
-insert into produto (id, nome, preco, descricao)values (1, 'telefone', 499.0, 'Melhor processador');
-insert into produto (id, nome, preco, descricao)values (3, 'cadeira', 300.0, 'A mais confortavel do mercado');
+insert into produto (id, nome, preco, data_criacao, descricao)values (1, 'telefone', 499.0, date_sub(sysdate(), interval 1 day), 'Melhor processador');
+insert into produto (id, nome, preco, data_criacao, descricao)values (3, 'cadeira', 300.0, date_sub(sysdate(), interval 1 day),'A mais confortavel do mercado');
 
 -- cliente
 insert into cliente (cliente_id, nome) values (1, 'Jose');
