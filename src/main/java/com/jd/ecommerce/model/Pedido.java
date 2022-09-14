@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
@@ -23,6 +24,7 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 import com.jd.ecommerce.enuns.StatusPedido;
+import com.jd.ecommerce.listener.GerarNotaFiscalListener;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -31,6 +33,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EntityListeners({ GerarNotaFiscalListener.class })
 @Entity
 @Table(name = "pedido")
 public class Pedido {
