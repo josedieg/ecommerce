@@ -3,6 +3,8 @@ package com.jd.ecommerce.model;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,19 +24,11 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@IdClass(ItemPedidoId.class)
 @Table(name = "item_pedido")
 public class ItemPedido {
 
-    @EqualsAndHashCode.Include
-    @Id
-    @Column(name = "pedido_id")
-    private Integer pedidoId;
-
-    @EqualsAndHashCode.Include
-    @Id
-    @Column(name = "produto_id")
-    private Integer produtoId;
+    @EmbeddedId
+    private ItemPedidoId id;
     
     @ManyToOne
     @JoinColumn(name = "pedido_id", insertable = false, updatable = false)
