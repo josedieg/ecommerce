@@ -3,7 +3,7 @@ insert into produto (id, nome, preco, data_criacao, descricao)values (1, 'telefo
 insert into produto (id, nome, preco, data_criacao, descricao)values (3, 'cadeira', 300.0, date_sub(sysdate(), interval 1 day),'A mais confortavel do mercado');
 
 -- cliente
-insert into cliente (cliente_id, nome) values (1, 'Jose');
+insert into cliente (cliente_id, nome) values (1, 'Jose Alves');
 insert into cliente (cliente_id, nome) values (2, 'Maria');
 
 -- pedido
