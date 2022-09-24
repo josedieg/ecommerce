@@ -4,7 +4,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -43,11 +45,20 @@ public class Produto {
 
     @ManyToMany
     @JoinTable(name = "produto_categoria",
-    	joinColumns = @JoinColumn(columnDefinition = "produto_id"),
-    	inverseJoinColumns = @JoinColumn(columnDefinition = "id"))
+    joinColumns = @JoinColumn(
+	columnDefinition = "produto_id"),
+    	inverseJoinColumns = @JoinColumn(columnDefinition = "id")
+    )
     private List<Categoria> categorias;
-    
+
     @OneToOne(mappedBy = "produto")
     @JoinColumn(name = "estoque_id")
     private Estoque estoque;
+
+    @ElementCollection
+    @CollectionTable(name = "produto_tag", joinColumns = 
+    	@JoinColumn(columnDefinition = "produto_id")
+    )
+    @Column(name = "tag")
+    private List<String> tags;
 }
