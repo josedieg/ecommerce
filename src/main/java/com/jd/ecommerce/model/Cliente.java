@@ -1,5 +1,6 @@
 package com.jd.ecommerce.model;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,8 @@ import javax.persistence.JoinColumns;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.PostLoad;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -29,6 +32,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@SecondaryTable(name = "cliente_detalhe")
 @Entity
 @Table(name = "cliente")
 public class Cliente {
@@ -41,17 +45,20 @@ public class Cliente {
 
     private String nome;
 
+    private LocalDate dataNascimento;
+
     @Transient
     private String primeiroNome;
 
     @Enumerated(EnumType.STRING)
+    @Column(table = "cliente_detalhe")
     private SexoCliente sexo;
 
     @OneToMany(mappedBy = "clientePedido")
     private List<Pedido> pedidos;
 
     @ElementCollection
-    @CollectionTable(name = "cliente_contato",
+    @CollectionTable(name = "cliente_contato", 
     	joinColumns = @JoinColumn(name = "cliente_id"))
     @MapKeyColumn(name = "tipo")
     @Column(name = "descricao")
