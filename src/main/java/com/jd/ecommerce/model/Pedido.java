@@ -2,7 +2,6 @@ package com.jd.ecommerce.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,9 +11,6 @@ import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -26,26 +22,19 @@ import javax.persistence.Table;
 import com.jd.ecommerce.enuns.StatusPedido;
 import com.jd.ecommerce.listener.GerarNotaFiscalListener;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @EntityListeners({ GerarNotaFiscalListener.class })
 @Entity
 @Table(name = "pedido")
-public class Pedido {
-
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Pedido extends EntidadeInteger{
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "cliente_pedido_id")
-    private Cliente clientePedido;
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
 
     @Column(name = "data_criacao")
     private LocalDateTime dataCriacao;
@@ -71,7 +60,7 @@ public class Pedido {
     private Endereco enderecoEntrega;
 
     @OneToOne(mappedBy = "pedido")
-    private PagamentoCartao pagamento;
+    private Pagamento pagamento;
 
     private void calcularTotal() {
 	if (this.itens != null) {

@@ -14,15 +14,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "estoque")
-public class Estoque {
-
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Estoque extends EntidadeInteger{
 
     @OneToOne(optional = false)
     @JoinColumn(name = "produto_id")

@@ -1,17 +1,15 @@
--- produto
-insert into produto (id, nome, preco, data_criacao, descricao)values (1, 'telefone', 499.0, date_sub(sysdate(), interval 1 day), 'Melhor processador');
-insert into produto (id, nome, preco, data_criacao, descricao)values (3, 'cadeira', 300.0, date_sub(sysdate(), interval 1 day),'A mais confortavel do mercado');
+insert into produto (id, nome, preco, data_criacao, descricao) values (1, 'smartphone 5G', 499.0, date_sub(sysdate(), interval 1 day), 'Melhor smartphone');
+insert into produto (id, nome, preco, data_criacao, descricao) values (3, 'notebook I5', 1400.0, date_sub(sysdate(), interval 1 day), 'Desempenho 2x melhor.');
 
--- cliente
-insert into cliente (cliente_id, nome) values (1, 'Jose Alves');
-insert into cliente (cliente_id, nome) values (2, 'Maria');
+insert into cliente (id, nome) values (1, 'Jose Andrade');
+insert into cliente (id, nome) values (2, 'Maria Oliveira');
 
--- pedido
-insert into pedido (id, cliente_pedido_id, data_criacao, total, status) values (1, 1, sysdate(), 100.0, 'AGUARDANDO');
+insert into pedido (id, cliente_id, data_criacao, total, status) values (1, 1, sysdate(), 998.0, 'AGUARDANDO');
+insert into pedido (id, cliente_id, data_criacao, total, status) values (2, 1, sysdate(), 499.0, 'AGUARDANDO');
 
--- item_pedido
-insert into item_pedido (id, pedido_id, produto_id, preco_produto, quantidade) values (1, 1, 1, 5.0, 2);
+insert into item_pedido (pedido_id, produto_id, preco_produto, quantidade) values (1, 1, 499, 2);
+insert into item_pedido (pedido_id, produto_id, preco_produto, quantidade) values (2, 1, 499, 1);
 
--- categoria
-insert into categoria (id, nome) values (1, 'Eletronicos');
-insert into categoria (id, nome) values (2, 'Moveis');
+insert into pagamento (pedido_id, status, numero_cartao) values (2, 'PROCESSANDO', '123');
+
+insert into categoria (id, nome) values (1, 'Eletrônicos');
