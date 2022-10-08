@@ -12,15 +12,12 @@ import com.jd.ecommerce.model.Produto;
 public class ChaveCompostaTest extends EntityManagerTest {
     @Test
     public void salvarItem() {
-	entityManager.getTransaction().begin();
 
 	Produto produto = entityManager.find(Produto.class, 1);
 	Pedido pedido = entityManager.find(Pedido.class, 1);
 
-	entityManager.persist(pedido);
-
-	entityManager.flush();
-
+	entityManager.getTransaction().begin();
+	
 	ItemPedido itemPedido = new ItemPedido();
 	itemPedido.setId(new ItemPedidoId(pedido.getId(), produto.getId()));
 	itemPedido.setPedido(pedido);

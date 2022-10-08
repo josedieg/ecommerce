@@ -8,6 +8,7 @@ import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +24,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Produto extends EntidadeInteger{
+public class Produto extends EntidadeInteger {
 
     @Column(name = "data_criacao", updatable = false)
     private LocalDateTime dataCriacao;
@@ -41,9 +42,10 @@ public class Produto extends EntidadeInteger{
     private BigDecimal preco;
 
     @ManyToMany
-    @JoinTable(name = "produto_categoria",
-    joinColumns = @JoinColumn(
-	columnDefinition = "produto_id"),
+    @JoinTable(name = "produto_categoria", 
+    	foreignKey = @ForeignKey(name = "fk_produto_categoria"), 
+    	inverseForeignKey = @ForeignKey(name = "fk_categoria_produto"), 
+    	joinColumns = @JoinColumn(columnDefinition = "produto_id"),
     	inverseJoinColumns = @JoinColumn(columnDefinition = "id")
     )
     private List<Categoria> categorias;
@@ -53,15 +55,11 @@ public class Produto extends EntidadeInteger{
     private Estoque estoque;
 
     @ElementCollection
-    @CollectionTable(name = "produto_tag", joinColumns = 
-    	@JoinColumn(columnDefinition = "produto_id")
-    )
+    @CollectionTable(name = "produto_tag", joinColumns = @JoinColumn(columnDefinition = "produto_id"))
     @Column(name = "tag")
     private List<String> tags;
 
     @ElementCollection
-    @CollectionTable(name = "produto_atributo", joinColumns = 
-    @JoinColumn(columnDefinition = "produto_id")
-	    )
+    @CollectionTable(name = "produto_atributo", joinColumns = @JoinColumn(columnDefinition = "produto_id"))
     private List<Atributo> atributos;
 }

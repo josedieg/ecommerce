@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,12 +34,12 @@ public class ItemPedido {
     
     @MapsId("pedidoId")
     @ManyToOne
-    @JoinColumn(name = "pedido_id")
+    @JoinColumn(name = "pedido_id", foreignKey = @ForeignKey(name="fk_item_pedido_pedido"))
     private Pedido pedido;
 
     @MapsId("produtoId")
     @ManyToOne(optional = false)
-    @JoinColumn(name = "produto_id")
+    @JoinColumn(name = "produto_id", foreignKey = @ForeignKey(name="fk_item_pedido_produto"))
     private Produto produto;
 
     @Column(name = "preco_produto")

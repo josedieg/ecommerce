@@ -3,6 +3,7 @@ package com.jd.ecommerce.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +26,7 @@ public class Categoria extends EntidadeInteger{
     private String nome;
 
     @ManyToOne
-    @JoinColumn(name = "categoria_pai_id")
+    @JoinColumn(name = "categoria_pai_id", foreignKey = @ForeignKey(name="fk_categoria_categoria_pai"))
     private Categoria categoriaPai;
 
     @OneToMany(mappedBy = "categoriaPai")

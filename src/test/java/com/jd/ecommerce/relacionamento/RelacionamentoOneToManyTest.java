@@ -19,7 +19,7 @@ public class RelacionamentoOneToManyTest extends EntityManagerTest{
 	Pedido pedido = new Pedido();
 	pedido.setStatus(StatusPedido.AGUARDANDO);
 	pedido.setDataConclusao(LocalDateTime.now());
-	pedido.setClientePedido(cliente);
+	pedido.setCliente(cliente);
 	pedido.setTotal(new BigDecimal(10));
 
 	entityManager.getTransaction().begin();

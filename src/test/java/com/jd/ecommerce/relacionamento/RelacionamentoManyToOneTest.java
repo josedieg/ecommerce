@@ -10,6 +10,7 @@ import com.jd.ecommerce.EntityManagerTest;
 import com.jd.ecommerce.enuns.StatusPedido;
 import com.jd.ecommerce.model.Cliente;
 import com.jd.ecommerce.model.ItemPedido;
+import com.jd.ecommerce.model.ItemPedidoId;
 import com.jd.ecommerce.model.Pedido;
 import com.jd.ecommerce.model.Produto;
 
@@ -22,7 +23,7 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
 	Pedido pedido = new Pedido();
 	pedido.setStatus(StatusPedido.AGUARDANDO);
 	pedido.setDataConclusao(LocalDateTime.now());
-	pedido.setClientePedido(cliente);
+	pedido.setCliente(cliente);
 	pedido.setTotal(new BigDecimal(10));
 
 	entityManager.getTransaction().begin();
@@ -31,7 +32,7 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
 	entityManager.clear();
 
 	Pedido p = entityManager.find(Pedido.class, pedido.getId());
-	Assert.assertNotNull(p.getClientePedido());
+	Assert.assertNotNull(p.getCliente());
     }
     
     @Test
@@ -43,10 +44,11 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setDataCriacao(LocalDateTime.now());
         pedido.setTotal(new BigDecimal(111));
-        pedido.setClientePedido(cliente);
+        pedido.setCliente(cliente);
 
         ItemPedido itemPedido = new ItemPedido();
         itemPedido.setPrecoProduto(produto.getPreco());
+        itemPedido.setId(new ItemPedidoId());
         itemPedido.setQuantidade(1);
         itemPedido.setPedido(pedido);
         itemPedido.setProduto(produto);
