@@ -57,7 +57,9 @@ public class Pedido extends EntidadeInteger {
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
 
-    @OneToMany(mappedBy = "pedido", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "pedido", fetch = FetchType.EAGER, 
+	    	cascade = CascadeType.MERGE
+	    )
     private List<ItemPedido> itens;
 
     @Embedded

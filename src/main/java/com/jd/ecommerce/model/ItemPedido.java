@@ -2,6 +2,7 @@ package com.jd.ecommerce.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
@@ -33,7 +34,7 @@ public class ItemPedido {
     private ItemPedidoId id;
     
     @MapsId("pedidoId")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "pedido_id", foreignKey = @ForeignKey(name="fk_item_pedido_pedido"))
     private Pedido pedido;
 

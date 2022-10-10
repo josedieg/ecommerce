@@ -7,6 +7,8 @@ insert into cliente (id, nome) values (2, 'Aparecida Lima');
 insert into pedido (id, cliente_id, data_criacao, total, status) values (1, 1, sysdate(), 998.0, 'AGUARDANDO');
 insert into pedido (id, cliente_id, data_criacao, total, status) values (2, 1, sysdate(), 499.0, 'AGUARDANDO');
 
+insert into item_pedido (pedido_id, produto_id, preco_produto, quantidade) values (1, 1, 499, 2);
 insert into item_pedido (pedido_id, produto_id, preco_produto, quantidade) values (2, 1, 499, 1);
 
 insert into categoria (id, nome) values (1, 'Eletrônicos');
+insert into categoria (id, nome) values (2, 'Móveis');
