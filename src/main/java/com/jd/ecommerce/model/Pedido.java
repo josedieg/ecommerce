@@ -58,7 +58,7 @@ public class Pedido extends EntidadeInteger {
     private StatusPedido status;
 
     @OneToMany(mappedBy = "pedido", fetch = FetchType.EAGER, 
-	    	cascade = CascadeType.MERGE
+	    	cascade = CascadeType.REMOVE
 	    )
     private List<ItemPedido> itens;
 
