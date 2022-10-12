@@ -10,5 +10,7 @@ insert into pedido (id, cliente_id, data_criacao, total, status) values (2, 1, s
 insert into item_pedido (pedido_id, produto_id, preco_produto, quantidade) values (1, 1, 499, 2);
 insert into item_pedido (pedido_id, produto_id, preco_produto, quantidade) values (2, 1, 499, 1);
 
+insert into db_ecommerce.pagamento (dtype,pedido_id,status,numero) values ('PagamentoCartao',2,'PROCESSANDO','123123123');
+
 insert into categoria (id, nome) values (1, 'Eletrônicos');
 insert into categoria (id, nome) values (2, 'Móveis');
