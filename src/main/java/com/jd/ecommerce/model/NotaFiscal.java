@@ -5,16 +5,14 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,6 +27,8 @@ public class NotaFiscal extends EntidadeInteger{
     @JoinColumn(name = "pedido_id", foreignKey = @ForeignKey(name="fk_nota_fical_pedido"))
     private Pedido pedido;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "data_emissao")
     private Date dataEmissao;
 
     @Lob

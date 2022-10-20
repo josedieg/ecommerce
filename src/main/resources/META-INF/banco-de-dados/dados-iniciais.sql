@@ -12,5 +12,7 @@ insert into item_pedido (pedido_id, produto_id, preco_produto, quantidade) value
 
 insert into db_ecommerce.pagamento (dtype,pedido_id,status,numero) values ('PagamentoCartao',2,'PROCESSANDO','123123123');
 
+insert into nota_fiscal (pedido_id, xml, data_emissao) values (2, '<xml />', sysdate());
+
 insert into categoria (id, nome) values (1, 'Eletrônicos');
 insert into categoria (id, nome) values (2, 'Móveis');
